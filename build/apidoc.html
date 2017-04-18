@@ -72,15 +72,6 @@
 
         <li>
 
-            <a class="apidocElementLiA" href="#apidoc.element.seraph.co">
-            function <span class="apidocSignatureSpan">seraph.</span>co
-            <span class="apidocSignatureSpan">(opts)</span>
-            </a>
-
-        </li>
-
-        <li>
-
             <a class="apidocElementLiA" href="#apidoc.element.seraph.toString">
             function <span class="apidocSignatureSpan">seraph.</span>toString
             <span class="apidocSignatureSpan">()</span>
@@ -109,19 +100,6 @@
         <li>
 
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">seraph.</span>relationship</span>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.seraph.co">module seraph.co</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.seraph.co.co">
-            function <span class="apidocSignatureSpan">seraph.</span>co
-            <span class="apidocSignatureSpan">(opts)</span>
-            </a>
 
         </li>
 
@@ -383,19 +361,6 @@
 
     </ol></li>
 
-    <li class="apidocModuleLi"><a href="#apidoc.module.seraph.toString">module seraph.toString</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.seraph.toString.toString">
-            function <span class="apidocSignatureSpan">seraph.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
 </ol></div>
 
 <div class="apidocSectionDiv">
@@ -415,34 +380,6 @@
     return require(&#x27;../co&#x27;)(options);
   }
   return new Seraph(options);
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.seraph.co" id="apidoc.element.seraph.co">
-        function <span class="apidocSignatureSpan">seraph.</span>co
-        <span class="apidocSignatureSpan">(opts)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">co = function (opts) {
-  var db = seraph(opts);
-  return function wrapObject(obj) {
-    var copy = {};
-    Object.keys(obj).forEach(function(key) {
-      if (typeof obj[key] == &#x27;function&#x27; &#x26;&#x26; excludes.indexOf(key) == -1 &#x26;&#x26; key[0] != &#x27;_&#x27;) {
-        copy[key] = thunkify(obj[key]);
-      } else if (typeof obj[key] == &#x27;object&#x27;) {
-        copy[key] = wrapObject(obj[key]);
-      } else {
-        copy[key] = obj[key];
-      }
-    });
-    return copy;
-  }(db);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -484,39 +421,6 @@ dbRemote.read({ id: 13 }, function(err, node) {
 
 
 
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.seraph.co" id="apidoc.module.seraph.co">module seraph.co</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.seraph.co.co" id="apidoc.element.seraph.co.co">
-        function <span class="apidocSignatureSpan">seraph.</span>co
-        <span class="apidocSignatureSpan">(opts)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">co = function (opts) {
-  var db = seraph(opts);
-  return function wrapObject(obj) {
-    var copy = {};
-    Object.keys(obj).forEach(function(key) {
-      if (typeof obj[key] == &#x27;function&#x27; &#x26;&#x26; excludes.indexOf(key) == -1 &#x26;&#x26; key[0] != &#x27;_&#x27;) {
-        copy[key] = thunkify(obj[key]);
-      } else if (typeof obj[key] == &#x27;object&#x27;) {
-        copy[key] = wrapObject(obj[key]);
-      } else {
-        copy[key] = obj[key];
-      }
-    });
-    return copy;
-  }(db);
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
 
 
 </div>
@@ -1933,39 +1837,6 @@ in order to do that you&#x27;ll need to delete the old relationship and create a
 one.
 
 __Arguments__
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.seraph.toString" id="apidoc.module.seraph.toString">module seraph.toString</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.seraph.toString.toString" id="apidoc.element.seraph.toString.toString">
-        function <span class="apidocSignatureSpan">seraph.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-// Copy node#13 from remote server
-dbRemote.read({ id: 13 }, function(err, node) {
-  if (err) throw err;
-  delete node.id; // copy instead of overwriting local node#13
-  dbLocal.save(node, function(err, nodeL) {
-    if (err) throw err;
-    console.log(&#x22;Copied remote node#13 to &#x22; +
-                &#x22;local node#&#x22; + nodeL.id.<span class="apidocCodeKeywordSpan">toString</span>() + &#x22;.&#x22;);
-  });
-});
-```
-
-&#x3c;a name=&#x22;changePassword&#x22; /&#x3e;
-### changePassword(newPassword, callback)
 ...</pre></li>
     </ul>
 
