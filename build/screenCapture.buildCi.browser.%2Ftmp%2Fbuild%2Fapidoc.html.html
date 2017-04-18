@@ -65,15 +65,6 @@
 
         <li>
 
-            <a class="apidocElementLiA" href="#apidoc.element.seraph.toString">
-            function <span class="apidocSignatureSpan">seraph.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-        <li>
-
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">seraph.</span>constraints</span>
 
         </li>
@@ -375,36 +366,6 @@
   return new Seraph(options);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.seraph.toString" id="apidoc.element.seraph.toString">
-        function <span class="apidocSignatureSpan">seraph.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-// Copy node#13 from remote server
-dbRemote.read({ id: 13 }, function(err, node) {
-  if (err) throw err;
-  delete node.id; // copy instead of overwriting local node#13
-  dbLocal.save(node, function(err, nodeL) {
-    if (err) throw err;
-    console.log("Copied remote node#13 to " +
-                "local node#" + nodeL.id.<span class="apidocCodeKeywordSpan">toString</span>() + ".");
-  });
-});
-```
-
-&lt;a name="changePassword" /&gt;
-### changePassword(newPassword, callback)
-...</pre></li>
     </ul>
 
 
