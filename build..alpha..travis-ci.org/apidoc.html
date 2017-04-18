@@ -1,0 +1,1980 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/brikteknologier/seraph#readme"
+
+    >seraph (v0.15.2)</a>
+</h1>
+<h4>A thin and familiar layer between node and neo4j's REST api.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.seraph">module seraph</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.seraph">
+            function <span class="apidocSignatureSpan"></span>seraph
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.co">
+            function <span class="apidocSignatureSpan">seraph.</span>co
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.toString">
+            function <span class="apidocSignatureSpan">seraph.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">seraph.</span>constraints</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">seraph.</span>legacyindex</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">seraph.</span>node</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">seraph.</span>relationship</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.seraph.co">module seraph.co</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.co.co">
+            function <span class="apidocSignatureSpan">seraph.</span>co
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.seraph.constraints">module seraph.constraints</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.constraints.list">
+            function <span class="apidocSignatureSpan">seraph.constraints.</span>list
+            <span class="apidocSignatureSpan">(label, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">seraph.constraints.</span>uniqueness</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.seraph.legacyindex">module seraph.legacyindex</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.legacyindex.add">
+            function <span class="apidocSignatureSpan">seraph.legacyindex.</span>add
+            <span class="apidocSignatureSpan">(type, indexName, obj, key, value, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.legacyindex.create">
+            function <span class="apidocSignatureSpan">seraph.legacyindex.</span>create
+            <span class="apidocSignatureSpan">(type, name, config, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.legacyindex.delete">
+            function <span class="apidocSignatureSpan">seraph.legacyindex.</span>delete
+            <span class="apidocSignatureSpan">(type, indexName, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.legacyindex.getOrSaveUnique">
+            function <span class="apidocSignatureSpan">seraph.legacyindex.</span>getOrSaveUnique
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.legacyindex.read">
+            function <span class="apidocSignatureSpan">seraph.legacyindex.</span>read
+            <span class="apidocSignatureSpan">(type, indexName, key, value, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.legacyindex.readAsList">
+            function <span class="apidocSignatureSpan">seraph.legacyindex.</span>readAsList
+            <span class="apidocSignatureSpan">(type, indexName, key, value, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.legacyindex.remove">
+            function <span class="apidocSignatureSpan">seraph.legacyindex.</span>remove
+            <span class="apidocSignatureSpan">(type, indexName, obj, key, value, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.legacyindex.saveUniqueOrFail">
+            function <span class="apidocSignatureSpan">seraph.legacyindex.</span>saveUniqueOrFail
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.seraph.node">module seraph.node</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.node._create">
+            function <span class="apidocSignatureSpan">seraph.node.</span>_create
+            <span class="apidocSignatureSpan">(obj, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.node._update">
+            function <span class="apidocSignatureSpan">seraph.node.</span>_update
+            <span class="apidocSignatureSpan">(obj, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.node._updateProp">
+            function <span class="apidocSignatureSpan">seraph.node.</span>_updateProp
+            <span class="apidocSignatureSpan">(obj, key, val, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.node.delete">
+            function <span class="apidocSignatureSpan">seraph.node.</span>delete
+            <span class="apidocSignatureSpan">(id, force, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.node.find">
+            function <span class="apidocSignatureSpan">seraph.node.</span>find
+            <span class="apidocSignatureSpan">(predicate, any, label, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.node.label">
+            function <span class="apidocSignatureSpan">seraph.node.</span>label
+            <span class="apidocSignatureSpan">(node, label, replace, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.node.nodesWithLabel">
+            function <span class="apidocSignatureSpan">seraph.node.</span>nodesWithLabel
+            <span class="apidocSignatureSpan">(label, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.node.read">
+            function <span class="apidocSignatureSpan">seraph.node.</span>read
+            <span class="apidocSignatureSpan">(id, property, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.node.readLabels">
+            function <span class="apidocSignatureSpan">seraph.node.</span>readLabels
+            <span class="apidocSignatureSpan">(node, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.node.relate">
+            function <span class="apidocSignatureSpan">seraph.node.</span>relate
+            <span class="apidocSignatureSpan">(startNode, type, endNode, properties, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.node.relationships">
+            function <span class="apidocSignatureSpan">seraph.node.</span>relationships
+            <span class="apidocSignatureSpan">(obj, direction, relName, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.node.removeLabel">
+            function <span class="apidocSignatureSpan">seraph.node.</span>removeLabel
+            <span class="apidocSignatureSpan">(node, label, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.node.save">
+            function <span class="apidocSignatureSpan">seraph.node.</span>save
+            <span class="apidocSignatureSpan">(obj, key, val, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.seraph.relationship">module seraph.relationship</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.relationship.create">
+            function <span class="apidocSignatureSpan">seraph.relationship.</span>create
+            <span class="apidocSignatureSpan">(startNode, type, endNode, properties, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.relationship.delete">
+            function <span class="apidocSignatureSpan">seraph.relationship.</span>delete
+            <span class="apidocSignatureSpan">(id, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.relationship.read">
+            function <span class="apidocSignatureSpan">seraph.relationship.</span>read
+            <span class="apidocSignatureSpan">(id, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.relationship.update">
+            function <span class="apidocSignatureSpan">seraph.relationship.</span>update
+            <span class="apidocSignatureSpan">(rel, key, val, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.seraph.toString">module seraph.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.seraph.toString.toString">
+            function <span class="apidocSignatureSpan">seraph.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.seraph" id="apidoc.module.seraph">module seraph</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.seraph" id="apidoc.element.seraph.seraph">
+        function <span class="apidocSignatureSpan"></span>seraph
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">seraph = function (options) {
+  if (options &#x26;&#x26; options.thunkify) {
+    delete options.thunkify;
+    return require(&#x27;../co&#x27;)(options);
+  }
+  return new Seraph(options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.co" id="apidoc.element.seraph.co">
+        function <span class="apidocSignatureSpan">seraph.</span>co
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">co = function (opts) {
+  var db = seraph(opts);
+  return function wrapObject(obj) {
+    var copy = {};
+    Object.keys(obj).forEach(function(key) {
+      if (typeof obj[key] == &#x27;function&#x27; &#x26;&#x26; excludes.indexOf(key) == -1 &#x26;&#x26; key[0] != &#x27;_&#x27;) {
+        copy[key] = thunkify(obj[key]);
+      } else if (typeof obj[key] == &#x27;object&#x27;) {
+        copy[key] = wrapObject(obj[key]);
+      } else {
+        copy[key] = obj[key];
+      }
+    });
+    return copy;
+  }(db);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.toString" id="apidoc.element.seraph.toString">
+        function <span class="apidocSignatureSpan">seraph.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// Copy node#13 from remote server
+dbRemote.read({ id: 13 }, function(err, node) {
+  if (err) throw err;
+  delete node.id; // copy instead of overwriting local node#13
+  dbLocal.save(node, function(err, nodeL) {
+    if (err) throw err;
+    console.log(&#x22;Copied remote node#13 to &#x22; +
+                &#x22;local node#&#x22; + nodeL.id.<span class="apidocCodeKeywordSpan">toString</span>() + &#x22;.&#x22;);
+  });
+});
+```
+
+&#x3c;a name=&#x22;changePassword&#x22; /&#x3e;
+### changePassword(newPassword, callback)
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.seraph.co" id="apidoc.module.seraph.co">module seraph.co</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.co.co" id="apidoc.element.seraph.co.co">
+        function <span class="apidocSignatureSpan">seraph.</span>co
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">co = function (opts) {
+  var db = seraph(opts);
+  return function wrapObject(obj) {
+    var copy = {};
+    Object.keys(obj).forEach(function(key) {
+      if (typeof obj[key] == &#x27;function&#x27; &#x26;&#x26; excludes.indexOf(key) == -1 &#x26;&#x26; key[0] != &#x27;_&#x27;) {
+        copy[key] = thunkify(obj[key]);
+      } else if (typeof obj[key] == &#x27;object&#x27;) {
+        copy[key] = wrapObject(obj[key]);
+      } else {
+        copy[key] = obj[key];
+      }
+    });
+    return copy;
+  }(db);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.seraph.constraints" id="apidoc.module.seraph.constraints">module seraph.constraints</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.constraints.list" id="apidoc.element.seraph.constraints.list">
+        function <span class="apidocSignatureSpan">seraph.constraints.</span>list
+        <span class="apidocSignatureSpan">(label, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">list = function (label, callback) {
+  if (typeof label == &#x27;function&#x27;) {
+    callback = label;
+    label = null;
+  }
+
+  var endpoint = &#x27;schema/constraint&#x27;;
+
+  if (label) endpoint += &#x27;/&#x27; + encodeURIComponent(label);
+
+  var op = this.operation(endpoint, &#x27;GET&#x27;);
+  this.call(op, function(err, constraints) {
+    if (err) callback(err);
+    else callback(null, constraints);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  });
+});
+```
+
+## Constraints Operations
+
+&#x3c;a name=&#x22;constraints.list&#x22; /&#x3e;
+### constraints.<span class="apidocCodeKeywordSpan">list</span>([label,] callback)
+
+List all constraints, or optionally all constraints for a label.
+
+__Arguments__
+
+* `label` (optional) - the label to list constraints for
+* `callback` - function(err, constraints). `constraints` is an array of
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.seraph.legacyindex" id="apidoc.module.seraph.legacyindex">module seraph.legacyindex</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.legacyindex.add" id="apidoc.element.seraph.legacyindex.add">
+        function <span class="apidocSignatureSpan">seraph.legacyindex.</span>add
+        <span class="apidocSignatureSpan">(type, indexName, obj, key, value, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function (type, indexName, obj, key, value, callback) {
+  if (typeof value === &#x27;function&#x27;) {
+    callback = value;
+    value = key;
+    key = obj;
+    obj = indexName;
+    indexName = type;
+    type = &#x27;node&#x27;;
+  }
+
+  if (Array.isArray(obj)) {
+    var txn = this._safeBatch();
+    var args = [indexName, key, value];
+    var indexer = naan.ecurry(txn[type].legacyindex.add, args, [0, 2, 3]);
+    async.map(obj, indexer, callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  if (!isValidType(type, callback)) {
+    return;
+  }
+
+  var id = this._getId(obj);
+  if (!this._isValidId(id)) {
+    return callback(new Error(&#x22;Invalid ID&#x22;));
+  }
+  var location = this._location(type, id);
+
+  var request = {
+    uri: location,
+    key: key,
+    value: value
+  };
+
+  indexName = encodeURIComponent(indexName);
+
+  var endpoint = util.format(&#x27;index/%s/%s&#x27;, type, indexName);
+  var op = this.operation(endpoint, &#x27;POST&#x27;, request);
+  this.call(op, function(err) {
+    callback(err);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+});
+```
+
+---------------------------------------
+
+&#x3c;a name=&#x22;legacyindex.add&#x22; /&#x3e;
+&#x3c;a name=&#x22;node.legacyindex&#x22; /&#x3e;
+### node.legacyindex.<span class="apidocCodeKeywordSpan">add</span>(indexName, id|object, key, value, callback);
+### rel.legacyindex.add(indexName, id|object, key, value, callback);
+*`node.legacyindex.add` is aliased as __node.legacyindex__ &#x26; __legacyindex__*
+
+Add a node/relationship to a legacy index.
+
+__NOTE for legacy index functions:__ there are two different types of legacy
+index in neo4j - __node__ legacy indexes and __relationship__ legacy indexes.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.legacyindex.create" id="apidoc.element.seraph.legacyindex.create">
+        function <span class="apidocSignatureSpan">seraph.legacyindex.</span>create
+        <span class="apidocSignatureSpan">(type, name, config, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">create = function (type, name, config, callback) {
+  if (typeof name === &#x27;function&#x27;) {
+    callback = name;
+    name = type;
+    type = &#x27;node&#x27;;
+    config = null;
+  } else if (typeof config === &#x27;function&#x27;) {
+    callback = config;
+    if (typeof name === &#x27;object&#x27; &#x26;&#x26; !Array.isArray(name)) {
+      config = name;
+      name = type;
+      type = &#x27;node&#x27;;
+    } else {
+      config = null;
+    }
+  }
+
+  if (Array.isArray(name)) {
+    var txn = this._safeBatch();
+    var indexer = naan.ncurry(txn[type].legacyindex.create, config, 1);
+    async.map(name, indexer, callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  if (!isValidType(type, callback)) {
+    return;
+  }
+
+  var request = { name: name };
+  if (config != null) {
+    request.config = config;
+  }
+
+  var endpoint = util.format(&#x27;index/%s&#x27;, type);
+  var op = this.operation(endpoint, &#x27;POST&#x27;, request);
+  this.call(op, function(err) {
+    callback(err);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+---------------------------------------
+
+## Relationship Operations
+
+&#x3c;a name=&#x22;rel.create&#x22; /&#x3e;
+&#x3c;a name=&#x22;node.relate&#x22; /&#x3e;
+### rel.<span class="apidocCodeKeywordSpan">create</span>(firstId|firstObj, type, secondId|secondobj, [properties], callback)
+*Aliases: __relate__, __node.relate__*
+
+Create a relationship between two nodes.
+
+__Arguments__
+
+* `firstId | firstObject` - id of the start node or an object with an id property
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.legacyindex.delete" id="apidoc.element.seraph.legacyindex.delete">
+        function <span class="apidocSignatureSpan">seraph.legacyindex.</span>delete
+        <span class="apidocSignatureSpan">(type, indexName, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">delete = function (type, indexName, callback) {
+  if (Array.isArray(indexName)) {
+    var txn = this._safeBatch();
+    async.map(indexName, txn[type].legacyindex.delete, callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  indexName = encodeURIComponent(indexName);
+  var endpoint = util.format(&#x27;index/%s/%s&#x27;, type, indexName);
+  var op = this.operation(endpoint, &#x27;DELETE&#x27;);
+  this.call(op, function(err) {
+    callback(err);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var db = require(&#x22;seraph&#x22;)(&#x22;http://localhost:7474&#x22;);
+
+db.save({ name: &#x22;Test-Man&#x22;, age: 40 }, function(err, node) {
+  if (err) throw err;
+  console.log(&#x22;Test-Man inserted.&#x22;);
+
+  db.<span class="apidocCodeKeywordSpan">delete</span>(node, function(err) {
+    if (err) throw err;
+    console.log(&#x22;Test-Man away!&#x22;);
+  });
+});
+```
+
+## Documentation
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.legacyindex.getOrSaveUnique" id="apidoc.element.seraph.legacyindex.getOrSaveUnique">
+        function <span class="apidocSignatureSpan">seraph.legacyindex.</span>getOrSaveUnique
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getOrSaveUnique = function () {
+  var args = [].slice.call(arguments);
+  var type = args.shift();
+  args.push(mode);
+  if (type == &#x27;node&#x27;) return saveUniqueNode.apply(this, args);
+  else return saveUniqueRel.apply(this, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (!err) console.log(&#x27;The `friendships` index has been deleted&#x27;);
+});
+```
+
+---------------------------------------
+
+&#x3c;a name=&#x22;legacyindex.getOrSaveUnique&#x22; /&#x3e;
+### node.legacyindex.<span class="apidocCodeKeywordSpan">getOrSaveUnique</span>(node, index, key, value, callback);
+### rel.legacyindex.getOrSaveUnique(startNode, relName, endNode, [properties,] index, key, value, callback);
+
+Save a node or relationship, using a legacy index to enforce uniqueness. If
+there is already a node or relationship saved under the specified `key` and
+`value` in the specified `index`, that node or relationship will be returned.
+
+Note that you cannot use this function to update nodes.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.legacyindex.read" id="apidoc.element.seraph.legacyindex.read">
+        function <span class="apidocSignatureSpan">seraph.legacyindex.</span>read
+        <span class="apidocSignatureSpan">(type, indexName, key, value, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">read = function (type, indexName, key, value, callback) {
+  indexModule.readAsList.call(this, type, indexName, key, value, function (err, results) {
+    if (err) return callback(err);
+
+    if (results.length === 1) {
+      callback(null, results[0]);
+    } else if (results.length === 0) {
+      callback(null, false);
+    } else {
+      callback(null, results);
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// To http://example.com:53280/neo with user &#x22;root&#x22; and pass &#x22;jf8%kLs#!&#x22;
+var dbRemote = require(&#x22;seraph&#x22;)({ server: &#x22;http://example.com:53280&#x22;,
+                                 endpoint: &#x22;/neo&#x22;,
+                                 user: &#x22;root&#x22;,
+                                 pass: &#x22;jf8%kLs#!&#x22; });
+
+// Copy node#13 from remote server
+dbRemote.<span class="apidocCodeKeywordSpan">read</span>({ id: 13 }, function(err, node) {
+if (err) throw err;
+delete node.id; // copy instead of overwriting local node#13
+dbLocal.save(node, function(err, nodeL) {
+  if (err) throw err;
+  console.log(&#x22;Copied remote node#13 to &#x22; +
+              &#x22;local node#&#x22; + nodeL.id.toString() + &#x22;.&#x22;);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.legacyindex.readAsList" id="apidoc.element.seraph.legacyindex.readAsList">
+        function <span class="apidocSignatureSpan">seraph.legacyindex.</span>readAsList
+        <span class="apidocSignatureSpan">(type, indexName, key, value, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readAsList = function (type, indexName, key, value, callback) {
+  if (typeof value === &#x27;function&#x27;) {
+    callback = value;
+    value = key;
+    key = indexName;
+    indexName = type;
+    type = &#x27;node&#x27;;
+  }
+
+  if (!isValidType(type, callback)) {
+    return;
+  }
+
+  indexName = encodeURIComponent(indexName);
+  value = encodeURIComponent(value);
+  key = encodeURIComponent(key);
+
+  var ep = util.format(&#x27;index/%s/%s/%s/%s&#x27;, type, indexName, key, value);
+  var op = this.operation(ep, &#x27;GET&#x27;);
+  var self = this;
+  this.call(op, function(err, entities) {
+    if (err) {
+      return callback(err);
+    }
+
+    var entityObjects = entities.map(function(entity) {
+      return type === &#x27;node&#x27;
+        ? self._createNodeObject(entity)
+        : self._createRelationshipObject(entity);
+    });
+
+    callback(null, entityObjects);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // index, with a value `Norway` for the key `location`.
+});
+```
+
+---------------------------------------
+
+&#x3c;a name=&#x22;legacyindex.readAsList&#x22; /&#x3e;
+### node.legacyindex.<span class="apidocCodeKeywordSpan">readAsList</span>(indexName, key, value, callback);
+### rel.legacyindex.readAsList(indexName, key, value, callback);
+
+Read the object(s) from a legacy index that match a key-value pair. See also
+[legacyindex.read](#legacyindex.read).
+
+__NOTE for legacy index functions:__ there are two different types of legacy
+index in neo4j - __node__ legacy indexes and __relationship__ legacy indexes.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.legacyindex.remove" id="apidoc.element.seraph.legacyindex.remove">
+        function <span class="apidocSignatureSpan">seraph.legacyindex.</span>remove
+        <span class="apidocSignatureSpan">(type, indexName, obj, key, value, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (type, indexName, obj, key, value, callback) {
+  if (typeof key === &#x27;function&#x27;) {
+    callback = key, key = null, value = null;
+  } else if (typeof value === &#x27;function&#x27;) {
+    callback = value, value = null;
+  }
+
+  if (Array.isArray(obj)) {
+    var txn = this._safeBatch();
+    var args = [indexName, key, value];
+    var rm = naan.ecurry(txn[type].legacyindex.remove, args, [0, 2, 3]);
+    async.map(obj, rm, callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  var id = this._getId(obj);
+  if (!this._isValidId(id)) {
+    return callback(new Error(&#x22;Invalid ID&#x22;));
+  }
+
+  indexName = encodeURIComponent(indexName);
+  var endpoint = util.format(&#x27;index/%s/%s&#x27;, type, indexName);
+
+  if (key) endpoint += &#x27;/&#x27; + encodeURIComponent(key);
+  if (value) endpoint += &#x27;/&#x27; + encodeURIComponent(value)
+
+  endpoint += &#x27;/&#x27; + id;
+
+  var op = this.operation(endpoint, &#x27;DELETE&#x27;);
+  this.call(op, function(err) {
+    callback(err);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // legacy index, with a value `Norway` for the key `location`.
+});
+```
+
+---------------------------------------
+
+&#x3c;a name=&#x22;legacyindex.remove&#x22; /&#x3e;
+### node.legacyindex.<span class="apidocCodeKeywordSpan">remove</span>(indexName, id|object, [key, [value,]] callback);
+### rel.legacyindex.remove(indexName, id|object, [key, [value,]] callback);
+
+Remove a node/relationship from a legacy index.
+
+__NOTE for legacy index functions:__ there are two different types of legacy
+index in neo4j - __node__ legacy indexes and __relationship__ legacy indexes.
+When you&#x27;re working with __node__ legacy indexes, you use the functions on
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.legacyindex.saveUniqueOrFail" id="apidoc.element.seraph.legacyindex.saveUniqueOrFail">
+        function <span class="apidocSignatureSpan">seraph.legacyindex.</span>saveUniqueOrFail
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">saveUniqueOrFail = function () {
+  var args = [].slice.call(arguments);
+  var type = args.shift();
+  args.push(mode);
+  if (type == &#x27;node&#x27;) return saveUniqueNode.apply(this, args);
+  else return saveUniqueRel.apply(this, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  });
+});
+```
+
+---------------------------------------
+
+&#x3c;a name=&#x22;legacyindex.saveUniqueOrFail&#x22; /&#x3e;
+### node.legacyindex.<span class="apidocCodeKeywordSpan">saveUniqueOrFail</span>(node, index, key, value, callback);
+### rel.legacyindex.saveUniqueOrFail(startNode, relName, endNode, [properties,] index, key, value, callback);
+
+Save a node or relationship, using a legacy index to enforce uniqueness. If
+there is already a node or relationship saved under the specified `key` and
+`value` in the specified `index`, an error is returned indicating that there
+as a conflict. You can check if the result was a conflict by checking if
+`err.statusCode == 409`.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.seraph.node" id="apidoc.module.seraph.node">module seraph.node</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.node._create" id="apidoc.element.seraph.node._create">
+        function <span class="apidocSignatureSpan">seraph.node.</span>_create
+        <span class="apidocSignatureSpan">(obj, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_create = function (obj, callback) {
+  var op = this.operation(&#x27;node&#x27;, obj);
+  this.call(op, function(err, body, location) {
+    if (err) {
+      return callback(err);
+    }
+
+    var result = _.clone(obj);
+    result[this.options.id] = this._extractId(location);
+
+    callback(null, result);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var id = this._getId(obj, !key);
+
+  if (!this._isValidId(id)) {
+    if (typeof obj !== &#x27;object&#x27;) {
+      return callback(new Error(&#x22;No data to save&#x22;));
+    }
+
+    this.node.<span class="apidocCodeKeywordSpan">_create</span>(obj, callback);
+  } else {
+    if (val) this.node._updateProp(obj, key, val, callback);
+    else this.node._update(obj, callback);
+  }
+},
+
+/**
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.node._update" id="apidoc.element.seraph.node._update">
+        function <span class="apidocSignatureSpan">seraph.node.</span>_update
+        <span class="apidocSignatureSpan">(obj, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_update = function (obj, callback) {
+  var id = this._getId(obj, true);
+  if (!this._isValidId(id)) {
+    return callback(new Error(&#x22;Invalid ID&#x22;));
+  }
+
+  var untouchedObj = _.clone(obj);
+  if (untouchedObj[this.options.id] != null) {
+    delete untouchedObj[this.options.id];
+  }
+
+  var endpoint = util.format(&#x27;%s/properties&#x27;, this._nodeRoot(id));
+  var op = this.operation(endpoint, &#x27;PUT&#x27;, untouchedObj);
+  this.call(op, function(err, body, response) {
+    if (err) {
+      return callback(err);
+    } else {
+      return callback(null, obj);
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if (typeof obj !== &#x27;object&#x27;) {
+      return callback(new Error(&#x22;No data to save&#x22;));
+    }
+
+    this.node._create(obj, callback);
+  } else {
+    if (val) this.node._updateProp(obj, key, val, callback);
+    else this.node.<span class="apidocCodeKeywordSpan">_update</span>(obj, callback);
+  }
+},
+
+/**
+ * Create a new object. Maps to /node.
+ */
+_create: function(obj, callback) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.node._updateProp" id="apidoc.element.seraph.node._updateProp">
+        function <span class="apidocSignatureSpan">seraph.node.</span>_updateProp
+        <span class="apidocSignatureSpan">(obj, key, val, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_updateProp = function (obj, key, val, callback) {
+  var id = this._getId(obj);
+  if (!this._isValidId(id)) {
+    return callback(new Error(&#x22;Invalid ID&#x22;));
+  }
+
+  var endpoint = util.format(&#x27;%s/properties/%s&#x27;, this._nodeRoot(id), key);
+  var op = this.operation(endpoint, &#x27;PUT&#x27;, val);
+  this.call(op, function(err, body) {
+    if (err) return callback(err);
+    else {
+      obj = _.clone(obj);
+      obj[key] = val;
+      callback(null, obj);
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (!this._isValidId(id)) {
+    if (typeof obj !== &#x27;object&#x27;) {
+      return callback(new Error(&#x22;No data to save&#x22;));
+    }
+
+    this.node._create(obj, callback);
+  } else {
+    if (val) this.node.<span class="apidocCodeKeywordSpan">_updateProp</span>(obj, key, val, callback);
+    else this.node._update(obj, callback);
+  }
+},
+
+/**
+ * Create a new object. Maps to /node.
+ */
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.node.delete" id="apidoc.element.seraph.node.delete">
+        function <span class="apidocSignatureSpan">seraph.node.</span>delete
+        <span class="apidocSignatureSpan">(id, force, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">delete = function (id, force, callback) {
+  var property = null;
+  if (typeof force == &#x27;function&#x27;) {
+    callback = force;
+    force = false;
+  } else if (typeof force == &#x27;string&#x27;) {
+    property = force;
+    force = false;
+  }
+
+  if (Array.isArray(id)) {
+    var txn = this._safeBatch();
+    async.map(id, naan.ncurry(txn.node.delete, force || property, 1), callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  var object = id;
+  id = this._getId(id);
+  if (!this._isValidId(id)) {
+    return callback(new Error(&#x22;Invalid ID&#x22;));
+  }
+
+  if (!force) {
+    var endpoint;
+    if (!property) endpoint = this._nodeRoot(id);
+    else
+      endpoint = util.format(&#x27;%s/properties/%s&#x27;, this._nodeRoot(id), property);
+    var op = this.operation(endpoint, &#x27;DELETE&#x27;);
+    this.call(op, function(err) {
+      if (!property || err || typeof object != &#x27;object&#x27;) callback(err);
+      else {
+        delete object[property];
+        callback(null, object);
+      }
+    });
+  } else {
+    this.query([
+      &#x27;START node=node({root})&#x27;,
+      &#x27;OPTIONAL MATCH (node)-[rel]-()&#x27;,
+      &#x27;DELETE node, rel&#x27;
+    ].join(&#x27; &#x27;), {root: id}, function(err) { callback(err) });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var db = require(&#x22;seraph&#x22;)(&#x22;http://localhost:7474&#x22;);
+
+db.save({ name: &#x22;Test-Man&#x22;, age: 40 }, function(err, node) {
+  if (err) throw err;
+  console.log(&#x22;Test-Man inserted.&#x22;);
+
+  db.<span class="apidocCodeKeywordSpan">delete</span>(node, function(err) {
+    if (err) throw err;
+    console.log(&#x22;Test-Man away!&#x22;);
+  });
+});
+```
+
+## Documentation
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.node.find" id="apidoc.element.seraph.node.find">
+        function <span class="apidocSignatureSpan">seraph.node.</span>find
+        <span class="apidocSignatureSpan">(predicate, any, label, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">find = function (predicate, any, label, callback) {
+  if (typeof any == &#x27;function&#x27;) {
+    callback = any;
+    any = false;
+    label = null;
+  } else if (typeof label == &#x27;function&#x27;) {
+    callback = label;
+    if (typeof any == &#x27;string&#x27;) {
+      label = any;
+      any = false;
+    } else {
+      label = null;
+    }
+  }
+
+  if (Array.isArray(predicate)) {
+    var txn = this._safeBatch();
+    var finder = naan.ecurry(txn.node.find, [any, label], [1, 2]);
+    async.map(predicate, finder, callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  if (typeof predicate !== &#x27;object&#x27;) callback(new Error(&#x27;Invalid Predicate&#x27;));
+
+  var matchers = Object.keys(predicate).reduce(function(matchers, key) {
+    return matchers.push(util.format(&#x22;n.%s = {%s}&#x22;, key, key)), matchers;
+  }, []);
+
+  var cypher = [
+    label == null ? &#x22;MATCH (n)&#x22; : util.format(&#x22;MATCH (n:`%s`)&#x22;, label),
+    matchers.length &#x3e; 0 ? &#x22;WHERE&#x22; : &#x22;&#x22;,
+    matchers.join(any ? &#x22; or &#x22; : &#x22; and &#x22;),
+    &#x22;RETURN n&#x22;
+  ].join(&#x22; &#x22;);
+
+  this.query(cypher, predicate, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+{ name: &#x27;Katie&#x27;  , age: 29, australian: true  }
+```
+
+Retrieve all australians:
+
+```javascript
+var predicate = { australian: true };
+var people = db.<span class="apidocCodeKeywordSpan">find</span>(predicate, function (err, people) {
+    if (err) throw err;
+    assert.equals(3, people.length);
+});
+```
+
+---------------------------------------
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.node.label" id="apidoc.element.seraph.node.label">
+        function <span class="apidocSignatureSpan">seraph.node.</span>label
+        <span class="apidocSignatureSpan">(node, label, replace, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">label = function (node, label, replace, callback) {
+  if (typeof replace == &#x27;function&#x27;) {
+    callback = replace;
+    replace = false;
+  }
+
+  if (Array.isArray(node)) {
+    var txn = this._safeBatch();
+    async.map(node, naan.ecurry(txn.label, [label, replace], [1,2]), callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  var id = this._getId(node);
+  if (!this._isValidId(id)) return callback(new Error(&#x22;Invalid ID&#x22;));
+
+  var endpoint = util.format(&#x27;%s/labels&#x27;, this._nodeRoot(id));
+  var op = this.operation(endpoint, replace ? &#x27;PUT&#x27; : &#x27;POST&#x27;, label);
+  this.call(op, function(err) {
+    if (err) callback(err);
+    else callback();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  labels.
+* `callback` - function(err). if err is falsy, the operation succeeded.
+
+__Example__
+
+```javascript
+db.save({ make: &#x27;Citroen&#x27;, model: &#x27;DS4&#x27; }, function(err, node) {
+  db.<span class="apidocCodeKeywordSpan">label</span>(node, [&#x27;Car&#x27;, &#x27;Hatchback&#x27;], function(err) {
+    // `node` is now labelled with &#x22;Car&#x22; and &#x22;Hatchback&#x22;!
+  });
+});
+```
+
+---------------------------------------
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.node.nodesWithLabel" id="apidoc.element.seraph.node.nodesWithLabel">
+        function <span class="apidocSignatureSpan">seraph.node.</span>nodesWithLabel
+        <span class="apidocSignatureSpan">(label, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">nodesWithLabel = function (label, callback) {
+  var endpoint = util.format(&#x27;label/%s/nodes&#x27;, label);
+  var op = this.operation(endpoint, &#x27;GET&#x27;);
+  this.call(op, function(err, nodes) {
+    if (err || !nodes) return callback(err, nodes);
+    nodes = nodes.map(this._createNodeObject);
+    callback(null, nodes);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  labelled with `label`, `results` is an empty array.
+
+__Example__
+
+```javascript
+db.save({ make: &#x27;Citroen&#x27;, model: &#x27;DS4&#x27; }, function(err, node) {
+  db.label(node, [&#x27;Car&#x27;, &#x27;Hatchback&#x27;], function(err) {
+    db.<span class="apidocCodeKeywordSpan">nodesWithLabel</span>(&#x27;Car&#x27;, function(err, results) {
+      results[0].model // -&#x3e; &#x27;DS4&#x27;
+    });
+  });
+});
+```
+
+---------------------------------------
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.node.read" id="apidoc.element.seraph.node.read">
+        function <span class="apidocSignatureSpan">seraph.node.</span>read
+        <span class="apidocSignatureSpan">(id, property, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">read = function (id, property, callback) {
+  if (typeof property == &#x27;function&#x27;) {
+    callback = property;
+    property = null;
+  }
+
+  if (Array.isArray(id)) {
+    var txn = this._safeBatch();
+    async.map(id, naan.ncurry(txn.read, property, 1), callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  id = this._getId(id);
+  if (!this._isValidId(id)) {
+    return callback(new Error(&#x22;Invalid ID&#x22;));
+  }
+
+  var endpoint;
+  if (!property)
+    endpoint = util.format(&#x27;%s/properties&#x27;, this._nodeRoot(id));
+  else
+    endpoint = util.format(&#x27;%s/properties/%s&#x27;, this._nodeRoot(id), property);
+  var op = this.operation(endpoint);
+  this.call(op, function(err, body) {
+    if (err) {
+      return callback(err);
+    } else {
+      if (!property) body[this.options.id] = id;
+      return callback(null, body);
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// To http://example.com:53280/neo with user &#x22;root&#x22; and pass &#x22;jf8%kLs#!&#x22;
+var dbRemote = require(&#x22;seraph&#x22;)({ server: &#x22;http://example.com:53280&#x22;,
+                                 endpoint: &#x22;/neo&#x22;,
+                                 user: &#x22;root&#x22;,
+                                 pass: &#x22;jf8%kLs#!&#x22; });
+
+// Copy node#13 from remote server
+dbRemote.<span class="apidocCodeKeywordSpan">read</span>({ id: 13 }, function(err, node) {
+if (err) throw err;
+delete node.id; // copy instead of overwriting local node#13
+dbLocal.save(node, function(err, nodeL) {
+  if (err) throw err;
+  console.log(&#x22;Copied remote node#13 to &#x22; +
+              &#x22;local node#&#x22; + nodeL.id.toString() + &#x22;.&#x22;);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.node.readLabels" id="apidoc.element.seraph.node.readLabels">
+        function <span class="apidocSignatureSpan">seraph.node.</span>readLabels
+        <span class="apidocSignatureSpan">(node, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readLabels = function (node, callback) {
+  if (typeof node == &#x27;function&#x27;) {
+    callback = node;
+    node = undefined;
+  }
+
+  if (Array.isArray(node)) {
+    var txn = this._safeBatch();
+    async.map(node, txn.readLabels, function(err, allLabels) {
+      if (err) return callback(err);
+      callback(null, _.uniq(_.flatten(allLabels)));
+    });
+    return this._safeBatchCommit(txn);
+  }
+
+  var endpoint;
+  if (node) {
+    var id = this._getId(node);
+    if (!this._isValidId(id)) return callback(new Error(&#x22;Invalid ID&#x22;));
+    endpoint = util.format(&#x27;%s/labels&#x27;, this._nodeRoot(id));
+  } else {
+    endpoint = &#x27;labels&#x27;;
+  }
+  var op = this.operation(endpoint, &#x27;GET&#x27;);
+  this.call(op, function(err, labels) {
+    if (err) callback(err);
+    else callback(null, labels);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* `callback` - function(err, labels). labels is an array of labels.
+
+__Example__
+
+```javascript
+db.save({ make: &#x27;Citroen&#x27;, model: &#x27;DS4&#x27; }, function(err, node) {
+  db.label(node, [&#x27;Car&#x27;, &#x27;Hatchback&#x27;], function(err) {
+    db.<span class="apidocCodeKeywordSpan">readLabels</span>(node, function(err, labels) {
+      //labels -&#x3e; [&#x27;Car&#x27;, &#x27;Hatchback&#x27;]
+    });
+  });
+});
+```
+
+---------------------------------------
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.node.relate" id="apidoc.element.seraph.node.relate">
+        function <span class="apidocSignatureSpan">seraph.node.</span>relate
+        <span class="apidocSignatureSpan">(startNode, type, endNode, properties, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">relate = function (startNode, type, endNode, properties, callback) {
+  this.rel.create(startNode, type, endNode, properties, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+For example, this is perfectly valid in the context of a batch transaction:
+
+```javascript
+var txn = db.batch();
+
+var singer = txn.save({name: &#x27;Johanna Kurkela&#x27;});
+var album = txn.save({title: &#x27;Kauriinsilmät&#x27;, year: 2008});
+var performance = txn.<span class="apidocCodeKeywordSpan">relate</span>(singer, &#x27;performs_on&#x27;, album, {role: &#x27;Primary
+ Artist&#x27;});
+txn.rel.legacyindex(&#x27;performances&#x27;, performance, &#x27;year&#x27;, &#x27;2008&#x27;);
+
+txn.commit(function(err, results) {});
+```
+
+#### I didn&#x27;t use any callbacks. How can I find my results when the batch is done?
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.node.relationships" id="apidoc.element.seraph.node.relationships">
+        function <span class="apidocSignatureSpan">seraph.node.</span>relationships
+        <span class="apidocSignatureSpan">(obj, direction, relName, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">relationships = function (obj, direction, relName, callback) {
+  if (typeof direction === &#x27;function&#x27;) {
+    callback = direction;
+    direction = &#x27;all&#x27;;
+    relName = &#x27;&#x27;;
+  } else {
+    if (typeof relName === &#x27;function&#x27;) {
+      callback = relName;
+      relName = &#x27;&#x27;;
+    }
+
+    if (typeof direction !== &#x27;string&#x27;) {
+      return callback(new Error(&#x27;Invalid direction - &#x27; + direction));
+    } else if (typeof relName !== &#x27;string&#x27;) {
+      return callback(new Error(&#x27;Invalid relationship name - &#x27; + relName));
+    }
+
+    direction = direction.toLowerCase();
+    if ([&#x27;in&#x27;, &#x27;all&#x27;, &#x27;out&#x27;].indexOf(direction) === -1) {
+      return callback(new Error(&#x27;Invalid direction - &#x27; + direction));
+    }
+  }
+
+  if (Array.isArray(obj)) {
+    var txn = this._safeBatch();
+    var args = [ direction, relName ];
+    var rels = naan.ecurry(txn.node.relationships, args, [1, 2]);
+    async.map(obj, rels, callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  var objId = this._getId(obj);
+
+  if (!this._isValidId(objId)) {
+    callback(new Error(&#x22;Invalid ID&#x22;));
+  }
+
+  var nodeRoot = this._nodeRoot(objId);
+  var endpoint = util.format(&#x27;%s/relationships/%s&#x27;, nodeRoot, direction);
+  if (relName) {
+    endpoint += &#x22;/&#x22; + relName;
+  }
+  var op = this.operation(endpoint);
+  var self = this;
+  this.call(op, function(err, rels) {
+    if (err) {
+      callback(err);
+    } else {
+      rels = rels.map(function(rel) {
+        return self._createRelationshipObject(rel);
+      });
+      callback(null, rels);
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  type to find
+* `callback` - function(err, relationships) - `relationships` is an array of the
+  matching relationships
+
+__Example__
+
+```javascript
+db.<span class="apidocCodeKeywordSpan">relationships</span>(452, &#x27;out&#x27;, &#x27;knows&#x27;, function(err, relationships
+) {
+  // relationships = all outgoing `knows` relationships from node 452
+});
+```
+
+---------------------------------------
+
+&#x3c;a name=&#x22;node.label&#x22; /&#x3e;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.node.removeLabel" id="apidoc.element.seraph.node.removeLabel">
+        function <span class="apidocSignatureSpan">seraph.node.</span>removeLabel
+        <span class="apidocSignatureSpan">(node, label, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">removeLabel = function (node, label, callback) {
+  if (Array.isArray(node)) {
+    var txn = this._safeBatch();
+    async.map(node, naan.ncurry(txn.removeLabel, label, 1), callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  var id = this._getId(node);
+  if (!this._isValidId(id)) return callback(new Error(&#x22;Invalid ID&#x22;));
+
+  var endpoint = util.format(&#x27;%s/labels/%s&#x27;, this._nodeRoot(id), label);
+  var op = this.operation(endpoint, &#x27;DELETE&#x27;);
+  this.call(op, function(err) {
+    if (err) callback(err);
+    else callback();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+__Example__
+
+```javascript
+db.save({ make: &#x27;Citroen&#x27;, model: &#x27;DS4&#x27; }, function(err, node) {
+  db.label(node, [&#x27;Car&#x27;, &#x27;Hatchback&#x27;], function(err) {
+    // `node` is now labelled with &#x22;Car&#x22; and &#x22;Hatchback&#x22;!
+    db.<span class="apidocCodeKeywordSpan">removeLabel</span>(node, &#x27;Hatchback&#x27;, function(err) {
+      // `node` is now only labelled with &#x22;Car&#x22;.
+    });
+  });
+});
+```
+
+---------------------------------------
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.node.save" id="apidoc.element.seraph.node.save">
+        function <span class="apidocSignatureSpan">seraph.node.</span>save
+        <span class="apidocSignatureSpan">(obj, key, val, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">save = function (obj, key, val, callback) {
+  if (typeof key == &#x27;function&#x27;) {
+    callback = key;
+    key = val = undefined;
+  } else if (typeof val == &#x27;function&#x27;) {
+    callback = val;
+    val = undefined;
+  }
+
+  var label = undefined;
+  if (key != undefined &#x26;&#x26; val == undefined) label = key;
+
+  if (label) {
+    if (this.isBatch) {
+      return callback(new Error(&#x22;node.save with labels is not compatible with &#x22;
+              + &#x22;batch mode. Use db.save &#x26; db.label instead.&#x22;));
+    }
+    var txn = this._safeBatch();
+    var node = txn.save(obj);
+    if (obj[this.options.id] != null) node = txn.read(obj);
+    txn.label(node, label);
+    return this._safeBatchCommit(txn, function(err, result) {
+      if (err) callback(err);
+      else callback(null, result[node]);
+    });
+  }
+
+  if (Array.isArray(obj)) {
+    var txn = this._safeBatch();
+    var args = [key, val];
+    async.map(obj, naan.ecurry(txn.save, args, [1, 2]), callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  var id = this._getId(obj, !key);
+
+  if (!this._isValidId(id)) {
+    if (typeof obj !== &#x27;object&#x27;) {
+      return callback(new Error(&#x22;No data to save&#x22;));
+    }
+
+    this.node._create(obj, callback);
+  } else {
+    if (val) this.node._updateProp(obj, key, val, callback);
+    else this.node._update(obj, callback);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+## Quick Example
+
+```javascript
+var db = require(&#x22;seraph&#x22;)(&#x22;http://localhost:7474&#x22;);
+
+db.<span class="apidocCodeKeywordSpan">save</span>({ name: &#x22;Test-Man&#x22;, age: 40 }, function(err, node) {
+if (err) throw err;
+console.log(&#x22;Test-Man inserted.&#x22;);
+
+db.delete(node, function(err) {
+  if (err) throw err;
+  console.log(&#x22;Test-Man away!&#x22;);
+});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.seraph.relationship" id="apidoc.module.seraph.relationship">module seraph.relationship</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.relationship.create" id="apidoc.element.seraph.relationship.create">
+        function <span class="apidocSignatureSpan">seraph.relationship.</span>create
+        <span class="apidocSignatureSpan">(startNode, type, endNode, properties, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">create = function (startNode, type, endNode, properties, callback) {
+  if (typeof properties === &#x27;function&#x27;) {
+    callback = properties;
+    properties = null;
+  }
+
+  if (Array.isArray(startNode)) {
+    var txn = this._safeBatch();
+    var args = [ type, endNode, properties ];
+    async.map(startNode, naan.ecurry(txn.rel.create, args, [1,2,3]),
+        function(err, rels) {
+          if (!err &#x26;&#x26; Array.isArray(endNode))
+            return callback(err, _.flatten(rels));
+          callback(err, rels);
+        });
+    return this._safeBatchCommit(txn);
+  } else if (Array.isArray(endNode)) {
+    var txn = this._safeBatch();
+    var args = [ startNode, type, properties ];
+    async.map(endNode, naan.ecurry(txn.rel.create, args, [0,1,3]), callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  var startNodeId = this._getId(startNode),
+      endNodeId = this._getId(endNode);
+
+  if (!this._isValidId(startNodeId) ||
+      !this._isValidId(endNodeId)) {
+    return callback(new Error(&#x22;Invalid ID&#x22;));
+  }
+
+  var request = {
+    to: this._location(&#x27;node&#x27;, endNodeId),
+    type: type,
+  };
+
+  if (properties) {
+    request[&#x27;data&#x27;] = properties;
+  }
+
+  var endpoint = util.format(&#x27;%s/relationships&#x27;, this._nodeRoot(startNodeId));
+  var op = this.operation(endpoint, &#x27;POST&#x27;, request);
+  this.call(op, function(err, rel) {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, this._createRelationshipObject(rel));
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+---------------------------------------
+
+## Relationship Operations
+
+&#x3c;a name=&#x22;rel.create&#x22; /&#x3e;
+&#x3c;a name=&#x22;node.relate&#x22; /&#x3e;
+### rel.<span class="apidocCodeKeywordSpan">create</span>(firstId|firstObj, type, secondId|secondobj, [properties], callback)
+*Aliases: __relate__, __node.relate__*
+
+Create a relationship between two nodes.
+
+__Arguments__
+
+* `firstId | firstObject` - id of the start node or an object with an id property
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.relationship.delete" id="apidoc.element.seraph.relationship.delete">
+        function <span class="apidocSignatureSpan">seraph.relationship.</span>delete
+        <span class="apidocSignatureSpan">(id, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">delete = function (id, callback) {
+  if (Array.isArray(id)) {
+    var txn = this._safeBatch();
+    async.map(id, txn.rel.delete, callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  id = this._getId(id);
+
+  if (!this._isValidId(id)) {
+    return callback(new Error(&#x22;Invalid ID&#x22;));
+  }
+
+  var endpoint = this._relRoot(id);
+  var op = this.operation(endpoint, &#x27;DELETE&#x27;);
+  this.call(op, function(err, rel) {
+    callback(err);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var db = require(&#x22;seraph&#x22;)(&#x22;http://localhost:7474&#x22;);
+
+db.save({ name: &#x22;Test-Man&#x22;, age: 40 }, function(err, node) {
+  if (err) throw err;
+  console.log(&#x22;Test-Man inserted.&#x22;);
+
+  db.<span class="apidocCodeKeywordSpan">delete</span>(node, function(err) {
+    if (err) throw err;
+    console.log(&#x22;Test-Man away!&#x22;);
+  });
+});
+```
+
+## Documentation
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.relationship.read" id="apidoc.element.seraph.relationship.read">
+        function <span class="apidocSignatureSpan">seraph.relationship.</span>read
+        <span class="apidocSignatureSpan">(id, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">read = function (id, callback) {
+  if (Array.isArray(id)) {
+    var txn = this._safeBatch();
+    async.map(id, txn.rel.read, callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  id = this._getId(id);
+
+  if (!this._isValidId(id)) {
+    return callback(new Error(&#x22;Invalid ID&#x22;));
+  }
+
+  var endpoint = this._relRoot(id);
+  var op = this.operation(endpoint);
+  this.call(op, function(err, rel) {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, this._createRelationshipObject(rel));
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// To http://example.com:53280/neo with user &#x22;root&#x22; and pass &#x22;jf8%kLs#!&#x22;
+var dbRemote = require(&#x22;seraph&#x22;)({ server: &#x22;http://example.com:53280&#x22;,
+                                 endpoint: &#x22;/neo&#x22;,
+                                 user: &#x22;root&#x22;,
+                                 pass: &#x22;jf8%kLs#!&#x22; });
+
+// Copy node#13 from remote server
+dbRemote.<span class="apidocCodeKeywordSpan">read</span>({ id: 13 }, function(err, node) {
+if (err) throw err;
+delete node.id; // copy instead of overwriting local node#13
+dbLocal.save(node, function(err, nodeL) {
+  if (err) throw err;
+  console.log(&#x22;Copied remote node#13 to &#x22; +
+              &#x22;local node#&#x22; + nodeL.id.toString() + &#x22;.&#x22;);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.relationship.update" id="apidoc.element.seraph.relationship.update">
+        function <span class="apidocSignatureSpan">seraph.relationship.</span>update
+        <span class="apidocSignatureSpan">(rel, key, val, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">update = function (rel, key, val, callback) {
+  if (typeof key == &#x27;function&#x27;) {
+    callback = key;
+    key = val = undefined;
+  }
+
+  if (Array.isArray(rel)) {
+    var txn = this._safeBatch();
+    var args = [key, val];
+    async.map(rel, naan.ecurry(txn.rel.update, args, [1, 2]), callback);
+    return this._safeBatchCommit(txn);
+  }
+
+  var id = this._getId(rel);
+
+  if (!this._isValidId(id)) {
+    return callback(new Error(&#x22;Invalid ID&#x22;));
+  }
+
+  var endpoint = util.format(&#x27;%s/properties&#x27;, this._relRoot(id));
+  if (key) endpoint += &#x27;/&#x27; + key;
+
+  var op = this.operation(endpoint, &#x27;PUT&#x27;, key ? val : rel.properties);
+  this.call(op, function(err) {
+    callback(err);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  });
+});
+```
+
+---------------------------------------
+
+&#x3c;a name=&#x22;rel.update&#x22; /&#x3e;
+### rel.<span class="apidocCodeKeywordSpan">update</span>(relationship, [key, value,] callback)
+
+Update the properties of a relationship. __Note__ that you cannot use this
+method to update the base properties of the relationship (start, end, type) -
+in order to do that you&#x27;ll need to delete the old relationship and create a new
+one.
+
+__Arguments__
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.seraph.toString" id="apidoc.module.seraph.toString">module seraph.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.seraph.toString.toString" id="apidoc.element.seraph.toString.toString">
+        function <span class="apidocSignatureSpan">seraph.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// Copy node#13 from remote server
+dbRemote.read({ id: 13 }, function(err, node) {
+  if (err) throw err;
+  delete node.id; // copy instead of overwriting local node#13
+  dbLocal.save(node, function(err, nodeL) {
+    if (err) throw err;
+    console.log(&#x22;Copied remote node#13 to &#x22; +
+                &#x22;local node#&#x22; + nodeL.id.<span class="apidocCodeKeywordSpan">toString</span>() + &#x22;.&#x22;);
+  });
+});
+```
+
+&#x3c;a name=&#x22;changePassword&#x22; /&#x3e;
+### changePassword(newPassword, callback)
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
